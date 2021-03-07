@@ -24,18 +24,5 @@ Nat.prime.2: Nat.prime(2)
             }!
         }!
     }!
-
-
-   // case n with h_kn: (n * k) == 2 = h_kn{
-   //   zero: 
-   //     let h = h_kn :: rewrite x in x == 2 with Nat.mul.zero_left(_)
-   //     Empty.absurd!(Nat.zero_neq_succ(1)(h))
-   //   succ: 
-   //     let h_x = Nat.mul.gte(k, n.pred)
-   //    // let h = Nat.eql.equal!!(h_x)
-   //    ?kk
-   // }!
   )
-
-  // How to prove that n * k == 2  -> n == 1 or n == 2?
  
