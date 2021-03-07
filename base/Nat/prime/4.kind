@@ -1,0 +1,10 @@
+Nat.prime.4: Not(Nat.prime(4))
+  (e)
+  open e
+  let contradiction = e.snd(2, 2 ~ refl)
+  Bool.true_neq_false(
+    case contradiction {  
+      left:  apply((n) Nat.eql(n,2),contradiction.value)
+      right: apply((n) Nat.eql(n,2),contradiction.value)
+    }!
+  )

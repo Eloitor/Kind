@@ -1,0 +1,13 @@
+Nat.eql.equal<a: Nat, b: Nat> (h: Nat.eql(a,b) == true): a == b
+  case a with h: Nat.eql(a,b) == true = h{
+    zero: case b with h: Nat.eql(0,b) == true = h {
+      zero: refl
+      succ: Empty.absurd!(Bool.true_neq_false(mirror(h)))
+    }!
+    succ: case b with h: Nat.eql(Nat.succ(a.pred),b) == true = h {
+      zero: Empty.absurd!(Bool.true_neq_false(mirror(h)))
+      succ: 
+        let h_ind = Nat.eql.equal(a.pred, b.pred, h)
+        apply(Nat.succ, h_ind) 
+    }!
+  }!

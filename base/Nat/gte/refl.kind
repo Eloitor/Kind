@@ -1,0 +1,5 @@
+Nat.gte.refl(a: Nat): Nat.gte(a, a) == true 
+  case a{
+    zero: refl 
+    succ: Nat.gte.refl(a.pred)
+  }!

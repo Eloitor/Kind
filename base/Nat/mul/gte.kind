@@ -1,0 +1,2 @@
+Nat.mul.gte(a: Nat, b: Nat): Nat.gte(a * Nat.succ(b), a) == true
+  Nat.add.gte(a, a*b)

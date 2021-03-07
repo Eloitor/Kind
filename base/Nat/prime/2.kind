@@ -1,0 +1,41 @@
+Nat.prime.2: Nat.prime(2)
+  Pair.new!!(refl, 
+    (n, h_n) // there exist some k such that k * n = 2
+    let {k, h_kn} = h_n
+    case k with h_kn_1: (n * k) == 2 = h_kn{
+      zero: 
+        let h = h_kn_1 :: rewrite x in x == 2 with Nat.mul.zero_right(_)
+        Empty.absurd!(Nat.zero_neq_succ(1)(h))
+      succ: 
+        case n with h_kn_2: (n * Nat.succ(k.pred)) == 2 = h_kn_1 {
+          zero: 
+            let h = h_kn_2 :: rewrite x in x == 2 with Nat.mul.zero_left(_)
+            Empty.absurd!(Nat.zero_neq_succ(1)(h))
+          succ:
+            case n.pred{
+              zero: Either.left!!(?shuld_be_easy)
+              succ: 
+                case n.pred.pred {
+                  zero: Either.right!!(?should_be_easy_too)
+                  succ: 
+                    let h_x = Nat.mul.gte(n, k.pred) :: rewrite x in Nat.gte(x, n) == true with h_kn_1
+                    Empty.absurd!(Bool.true_neq_false(?to_be_continued))
+                }!
+            }!
+        }!
+    }!
+
+
+   // case n with h_kn: (n * k) == 2 = h_kn{
+   //   zero: 
+   //     let h = h_kn :: rewrite x in x == 2 with Nat.mul.zero_left(_)
+   //     Empty.absurd!(Nat.zero_neq_succ(1)(h))
+   //   succ: 
+   //     let h_x = Nat.mul.gte(k, n.pred)
+   //    // let h = Nat.eql.equal!!(h_x)
+   //    ?kk
+   // }!
+  )
+
+  // How to prove that n * k == 2  -> n == 1 or n == 2?
+ 

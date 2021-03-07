@@ -1,0 +1,3 @@
+Nat.prime.gte_2(p: Nat, h_p: Nat.prime(p)): Nat.gte(p,2) == true 
+  open h_p
+  h_p.fst

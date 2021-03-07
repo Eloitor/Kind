@@ -1,0 +1,2 @@
+Nat.eql.succ_both(a: Nat, b: Nat): Nat.eql(Nat.succ(a), Nat.succ(b)) == Nat.eql(a, b)
+  refl

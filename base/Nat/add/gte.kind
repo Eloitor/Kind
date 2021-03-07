@@ -1,0 +1,5 @@
+Nat.add.gte(a: Nat, b: Nat): Nat.gte(Nat.add(a, b), a) == true
+  case a{
+    zero: refl
+    succ: Nat.add.gte(a.pred, b)
+  }!

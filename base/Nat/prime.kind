@@ -1,0 +1,5 @@
+Nat.prime(p: Nat): Type
+  Pair(
+    Nat.gte(p,2) == true, 
+    (n: Nat) Nat.divides(n,p) -> Either(n == 1, n == p)
+  )

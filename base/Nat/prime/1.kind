@@ -1,0 +1,4 @@
+Nat.prime.1: Not(Nat.prime(1))
+  (e)
+  open e
+  Bool.false_neq_true(e.fst)
