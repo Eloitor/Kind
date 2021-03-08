@@ -1,0 +1,4 @@
+Subtype.cast<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)): T
+  open S
+  open S.snd
+  ?hard

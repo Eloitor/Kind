@@ -1,0 +1,14 @@
+IsEven: Subtype(Nat)
+  ({x: Nat} (x % 2) == 0) ~ ((x) (x % 2)  == 0) ~ refl
+
+
+IsEven.0 : Sigma.fst!!(IsEven)
+  0 ~ refl
+
+IsEven.2 : Sigma.fst!!(IsEven)
+  2 ~ refl
+
+
+test (s: Sigma.fst!!(IsEven)): Nat
+   open s
+   ?h
