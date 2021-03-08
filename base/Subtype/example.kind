@@ -11,4 +11,4 @@ IsEven.2 : Sigma.fst!!(IsEven)
 
 test (s: Sigma.fst!!(IsEven)): Nat
    open s
-   ?h
+   s.fst
