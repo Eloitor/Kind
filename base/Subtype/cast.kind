@@ -1,4 +1,6 @@
 Subtype.cast<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)): T
   open S
   open S.snd
-  ?hard
+  let h = ?h :: Sigma.fst(Type,(S) Sigma((:T) Type,(P) S == Sigma(T,(t) P(t))),S) == Sigma(T, (t) S.snd.fst(t))
+  let tt = t :: rewrite x in x with h
+  Sigma.fst!!(tt)
