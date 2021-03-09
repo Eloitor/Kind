@@ -1,7 +1,15 @@
-Lemma<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)):
+test: ({x: Nat} (x%2) == 0) == ({x: Nat} ((2+x)%2) == 0)
+  refl
+
+Lemma<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)): Sigma.fst!!(S) == Sigma(T, (t) Sigma.fst!!(Sigma.snd!!(S))(t))
    // A Type A such that A == {t: T} P(t) for fome P: T -> Type
    // "equals" the subtype of T of elements t such that P(t)
-   Sigma.fst!!(S) == Sigma(T, (t) Sigma.fst!!(Sigma.snd!!(S))(t))
+   let h = refl :: Sigma.fst!!(S) == open S S.fst
+   rewrite x in x == _ with h
+   //let h2 = refl :: Sigma.snd!!(S) == open S S.snd 
+   //rewrite x in _ == x with h2
+   //rewrite x in S((S) Type,(S.fst) (S.snd) S.fst) == Sigma(T,(t) Sigma.fst((:T) Type,(P) x == Sigma(T,(t) P(t)),Sigma.snd(Type,(S) Sigma((:T) Type,(P) S == Sigma(T,(t) P(t))),S),t))
+   //                     with h
    ?wtf
 
 
