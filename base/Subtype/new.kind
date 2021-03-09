@@ -1,0 +1,2 @@
+Subtype.new<T: Type>(P: T -> Type) : Subtype(T)
+ Sigma(T, (x) P(x)) ~ P ~ refl
