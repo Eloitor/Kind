@@ -1,0 +1,2 @@
+Subtype.predicate<T: Type>(S: Subtype(T)): T -> Type
+  Sigma.fst!!(Sigma.snd!!(S))

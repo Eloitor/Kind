@@ -1,11 +1,11 @@
    // A Type A such that A == {t: T} P(t) for fome P: T -> Type
    // "equals" the subtype of T of elements t such that P(t)
-Lemma<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)): Sigma.fst!!(S) == Sigma(T, (t) Sigma.fst!!(Sigma.snd!!(S))(t))
+Lemma_cast<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)): Sigma.fst!!(S) == Sigma(T, (t) Sigma.fst!!(Sigma.snd!!(S))(t))
    let h = refl :: Sigma.fst!!(S) == open S S.fst
    rewrite x in x == _ with Sigma.snd!!(Sigma.snd!!(S))
    refl
 
 Subtype.cast<T: Type>(S: Subtype(T), t: Sigma.fst!!(S)): T
-  let h = Lemma!(S,t) :: Sigma.fst!((A) Sigma((:T) Type,(P) A == Sigma(T,(t) P(t))),S) == Sigma(T, (t) Sigma.fst!!(Sigma.snd!!(S))(t))
+  let h = Lemma_cast!(S,t) :: Sigma.fst!((A) Sigma((:T) Type,(P) A == Sigma(T,(t) P(t))),S) == Sigma(T, (t) Sigma.fst!!(Sigma.snd!!(S))(t))
   let tt = t :: rewrite x in x with h
   Sigma.fst!!(tt)
