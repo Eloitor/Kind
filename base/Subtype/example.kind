@@ -1,14 +1,27 @@
-IsEven: Subtype(Nat)
-  ({x: Nat} (x % 2) == 0) ~ ((x) (x % 2)  == 0) ~ refl
+Is_evenS: Subtype(Nat)
+  Subtype.new!((x) (x % 2)  == 0)
 
+Is_even: Type
+  Subtype.new.type!((x) 0 == x % 2)
+  //Sigma.fst!!(IsEvenS)
 
-IsEven.0 : Sigma.fst!!(IsEven)
+Is_subtype<T: Type, P: T -> Type, t: Type> (h: t == Sigma(T, P)): Subtype(T)
+   t ~ P ~ h
+
+Is_evenIsSubtype: Subtype(Nat)
+   Is_subtype!!(Is_even, refl) 
+
+Is_even.0 : Is_even
   0 ~ refl
 
-IsEven.2 : Sigma.fst!!(IsEven)
+Is_even.2 : Is_even
   2 ~ refl
 
 
-test (s: Sigma.fst!!(IsEven)): Nat
+test (s: Is_even): Nat
    open s
    s.fst
+
+// This trick does not work directly in general, so I wrote Subtype.cast.
+cast_nat<T: Subtype(Nat)>(s: Sigma.fst!!(T)): Nat
+  Subtype.cast!!(s)

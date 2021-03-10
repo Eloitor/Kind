@@ -1,5 +1,5 @@
-Subtype.new.type<T: Type>(P: T-> Type): Type
-  Sigma.fst!!(Subtype.new!(P))
+Subtype.new.type<T: Type> (P: T -> Type ): Type
+   Sigma.fst!!(Subtype.new!(P))
 
 Subtype.new<T: Type>(P: T -> Type) : Subtype(T)
   (Sigma!((x) P(x)) ~ P ~ refl)
