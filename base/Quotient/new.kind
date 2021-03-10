@@ -1,0 +1,13 @@
+// Given a base Type T, and a binary relation R,
+// An equivalence class E of the quotient type satisfies that
+// forall x, y : E, R(x,y)
+// Note that this does not require that R is an equivalence relation.
+
+Quotient.new(T: Type, R: T -> T -> Type) : Type
+  Subtype.new.type!(
+    (E)
+    (x: Sigma.fst!!(E)) 
+    (y: Sigma.fst!!(E)) 
+    R(Subtype.cast!!(x), Subtype.cast!!(y))
+  )
+ 

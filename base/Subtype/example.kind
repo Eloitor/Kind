@@ -5,11 +5,8 @@ Is_even: Type
   Subtype.new.type!((x) 0 == x % 2)
   //Sigma.fst!!(IsEvenS)
 
-Is_subtype<T: Type, P: T -> Type, t: Type> (h: t == Sigma(T, P)): Subtype(T)
-   t ~ P ~ h
-
 Is_evenIsSubtype: Subtype(Nat)
-   Is_subtype!!(Is_even, refl) 
+   Subtype.by_definition!!(Is_even, refl) 
 
 Is_even.0 : Is_even
   0 ~ refl

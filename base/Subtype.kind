@@ -1,5 +1,8 @@
 // The subtypes of a type T are those types S such that 
 // there exists P(x) such that S == Sigma(T, (n) P(n))
 
-Subtype<T: Type>: Type
-  {S: Type} ({P: T -> Type} (S == {t: T} P(t)))
+Subtype(T: Type): Type
+  Sigma(Type, (S) Sigma(T -> Type, (P) S == {t: T} P(t)))
+
+Subtype.by_definition<T: Type, P: T -> Type, t: Type> (h: t == Sigma(T, P)): Subtype(T)
+   t ~ P ~ h

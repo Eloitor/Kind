@@ -1,0 +1,2 @@
+Quotient(T: Type): Type
+  Subtype(Subtype(T))
