@@ -1,0 +1,6 @@
+Ints.0: Ints
+  Ints.from_nat(0)
+
+// {0,0} is a representant of 0.
+Ints.1.rep: Ints.representants(Ints.0)
+ {0,0} ~ refl

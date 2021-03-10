@@ -1,0 +1,2 @@
+Ints.equivalence(a: Pair(Nat, Nat), b: Pair(Nat, Nat)): Type
+  (Pair.fst!!(a) + Pair.snd!!(b)) == Pair.snd!!(a) + Pair.fst!!(b)

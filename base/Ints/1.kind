@@ -1,0 +1,7 @@
+// The integer 1 is represented by all pairs {a,b} equivalent to {1,0}
+Ints.1: Ints
+  Ints.from_nat(1)
+
+// {1,0} is a representant of 1.
+Ints.1.rep: Ints.representants(Ints.1)
+ {1,0} ~ refl

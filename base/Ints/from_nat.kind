@@ -1,0 +1,20 @@
+Lemma_transitive(a: Nat)(x: Pair(Nat, Nat), y: Pair(Nat,Nat), hx: Ints.equivalence(x,{a,0}), hy: Ints.equivalence(y,{a,0}))
+       :Ints.equivalence(x,y)
+      open x
+      open y
+      let hxx = hx :: Nat.add(Pair.fst!!(x),0) == Nat.add(_, a)
+      let hxxx = hxx :: rewrite x in x == _ with Nat.add.zero_right!
+      let hyy = hy :: Nat.add(_,0) == Nat.add(_, a)
+      let hyyy = hyy :: rewrite x in x == _ with Nat.add.zero_right!
+      rewrite x in Nat.add(x,_) == _ with hxxx
+      rewrite x in _ == Nat.add(_,x) with hyyy
+      rewrite x in x == _ with Nat.add.assoc!!!
+      rewrite x in Nat.add(_,x) == _ with Nat.add.comm!!
+      refl
+
+Ints.from_nat(a: Nat): Ints
+  Subtype.new!(
+    // The Subtype of Pair(Nat,Nat) of elements equivalent to {a,0}
+    (x) Ints.equivalence(x, {a,0})) ~
+    // We need a proof that the subtype of Pair(Nat,Nat) that we obtained is an Integer
+    (x) (y) Lemma_transitive(a,Subtype.cast!!(x), Subtype.cast!!(y), Sigma.snd!!(x), Sigma.snd!!(y))

@@ -1,0 +1,13 @@
+Ints.representantsA(I: Ints): Subtype(Pair(Nat,Nat))
+  Subtype.new!((x)
+    // I is a subtype of Pair(Nat,Nat)
+    let P = Subtype.predicate!(Sigma.fst!!(I))
+    P(x)
+  )
+
+Ints.representants.value<I: Ints>(r: Ints.representants(I)): Pair(Nat,Nat)
+  Subtype.cast!!(r)
+
+Ints.representants(I: Ints): Type
+  Sigma.fst!!(Sigma.fst!!(I))
+

@@ -1,0 +1,6 @@
+Ints.2: Ints
+  Ints.from_nat(2)
+
+// {2,0} is a representant of 1.
+Ints.1.rep: Ints.representants(Ints.2)
+ {2,0} ~ refl

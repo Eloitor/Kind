@@ -1,0 +1,16 @@
+
+  // An integer is a dependent pair that assigns to each pair {a,b} 
+ //the subtype of all pairs equivalent to it.
+  // Sigma(Pair(Nat,Nat), (p) Sigma(Pair(Nat, Nat), (q) Ints.equivalence(p,q)))
+
+// This will be used only in some proofs. 
+SInts: Subtype(Subtype(Pair(Nat,Nat)))
+   Subtype.by_definition!!(Ints, refl)
+
+   //Subtype.new!( (I) ( (x: Sigma.fst!!(I)) (y: Sigma.fst!!(I)) Ints.equivalence(Subtype.cast!!(x), Subtype.cast!!(y))))
+
+Ints: Type
+  Quotient.new(Pair(Nat,Nat), Ints.equivalence)
+  //Subtype.new.type!((I) ( (x: Sigma.fst!!(I)) (y: Sigma.fst!!(I)) Ints.equivalence(Subtype.cast!!(x), Subtype.cast!!(y))))
+  // Sigma.fst!!(SInts)
+
