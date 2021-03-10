@@ -1,0 +1,19 @@
+Ints.transitive(p: Pair(Nat,Nat))(x: Pair(Nat, Nat), y: Pair(Nat,Nat), hx: Ints.equivalence(x,p), hy: Ints.equivalence(y,p))
+       :Ints.equivalence(x,y)
+      let hxx = hx :: Nat.add(_,_) == Nat.add(_, _)
+      let hyy = mirror(hy) :: Nat.add(_,_) == Nat.add(_, _)
+      // Goal
+      // |- Nat.add(Pair.fst(Nat,Nat,x),Pair.snd(Nat,Nat,y)) == Nat.add(Pair.snd(Nat,Nat,x),Pair.fst(Nat,Nat,y))
+      Nat.add.cancel_right!(Pair.fst!!(p),_,
+        // Goal 
+        // |- Nat.add(Nat.add(Pair.fst(Nat,Nat,x),Pair.snd(Nat,Nat,y)),Pair.fst(Nat,Nat,p)) == Nat.add(Nat.add(Pair.snd(Nat,Nat,x),Pair.fst(Nat,Nat,y)),Pair.fst(Nat,Nat,p))
+        rewrite x in x == _ with Nat.add.assoc!!!
+        rewrite x in Nat.add(_, x) == _ with hyy
+        rewrite x in x == _ with mirror(Nat.add.assoc!!!)
+        rewrite x in Nat.add(x, _) == _ with Nat.add.comm!!
+        rewrite x in x == _ with Nat.add.assoc!!!
+        rewrite x in Nat.add(_, x) == _ with hxx
+        rewrite x in x == _ with mirror(Nat.add.assoc!!!)
+        rewrite x in Nat.add(x, _) == _ with Nat.add.comm!!
+        refl
+      )

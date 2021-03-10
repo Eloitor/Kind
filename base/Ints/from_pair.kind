@@ -1,0 +1,26 @@
+Lemma_transitive(p: Pair(Nat,Nat))(x: Pair(Nat, Nat), y: Pair(Nat,Nat), hx: Ints.equivalence(x,p), hy: Ints.equivalence(y,p))
+       :Ints.equivalence(x,y)
+      let hxx = hx :: Nat.add(_,_) == Nat.add(_, _)
+      let hyy = mirror(hy) :: Nat.add(_,_) == Nat.add(_, _)
+      // Goal
+      // |- Nat.add(Pair.fst(Nat,Nat,x),Pair.snd(Nat,Nat,y)) == Nat.add(Pair.snd(Nat,Nat,x),Pair.fst(Nat,Nat,y))
+      Nat.add.cancel_right!(Pair.fst!!(p),_,
+        // Goal 
+        // |- Nat.add(Nat.add(Pair.fst(Nat,Nat,x),Pair.snd(Nat,Nat,y)),Pair.fst(Nat,Nat,p)) == Nat.add(Nat.add(Pair.snd(Nat,Nat,x),Pair.fst(Nat,Nat,y)),Pair.fst(Nat,Nat,p))
+        rewrite x in x == _ with Nat.add.assoc!!!
+        rewrite x in Nat.add(_, x) == _ with hyy
+        rewrite x in x == _ with mirror(Nat.add.assoc!!!)
+        rewrite x in Nat.add(x, _) == _ with Nat.add.comm!!
+        rewrite x in x == _ with Nat.add.assoc!!!
+        rewrite x in Nat.add(_, x) == _ with hxx
+        rewrite x in x == _ with mirror(Nat.add.assoc!!!)
+        rewrite x in Nat.add(x, _) == _ with Nat.add.comm!!
+        refl
+      )
+
+Ints.from_pair(p: Pair(Nat,Nat)): Ints
+  Subtype.new!(
+  // The Subtype of Pair(Nat,Nat) of elements equivalent to p
+  (x) Ints.equivalence(x, p)) ~
+    // We need a proof that the subtype of Pair(Nat,Nat) that we obtained is an Integer
+    (x) (y) Lemma_transitive(p,Subtype.cast!!(x), Subtype.cast!!(y), Sigma.snd!!(x), Sigma.snd!!(y))
